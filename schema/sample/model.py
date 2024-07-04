@@ -18,8 +18,7 @@ from common import SchemaConfig, LayerOpt, Reference, ID, Key, BaseSchema, ProfS
 class User(BaseModel, ProfSchema): pass
 
 
-@SchemaConfig(
-major=1, minor=1,
+@SchemaConfig( 1 ,
 cacheOption=LayerOpt(expire=86400),
 searchOption=LayerOpt(expire=2419200))
 class Blog(BaseModel, MetaSchema, TagSchema, BaseSchema):
@@ -29,8 +28,7 @@ class Blog(BaseModel, MetaSchema, TagSchema, BaseSchema):
     subscriptions:List[User] = []
 
 
-@SchemaConfig(
-major=1, minor=1,
+@SchemaConfig( 1 ,
 cacheOption=LayerOpt(expire=86400),
 searchOption=LayerOpt(expire=2419200))
 class Message(BaseModel, BaseSchema):
