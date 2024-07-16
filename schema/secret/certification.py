@@ -8,7 +8,7 @@ Equal Plus
 # Import
 #===============================================================================
 from pydantic import BaseModel
-from common import SchemaConfig, LayerOpt, Reference, ID, Key, BaseSchema, ProfSchema
+from common import AuthLevel, SchemaConfig, LayerOpt, Reference, ID, Key, BaseSchema, ProfSchema
 
 
 #===============================================================================
@@ -24,7 +24,9 @@ class Csr(BaseModel):
     emailAddress:Key = ''
 
 
-@SchemaConfig(minor=1,
+@SchemaConfig(
+minor=1,
+auth=AuthLevel.AA,
 cacheOption=LayerOpt(expire=86400),
 searchOption=LayerOpt(expire=2419200))
 class Authority(BaseModel, ProfSchema, BaseSchema):
@@ -40,7 +42,9 @@ class AuthorityRequest(BaseModel):
     expiry: int = 10
 
 
-@SchemaConfig(minor=1,
+@SchemaConfig(
+minor=1,
+auth=AuthLevel.AA,
 cacheOption=LayerOpt(expire=86400),
 searchOption=LayerOpt(expire=2419200))
 class Server(BaseModel, ProfSchema, BaseSchema):

@@ -8,13 +8,15 @@ Equal Plus
 # Import
 #===============================================================================
 from pydantic import BaseModel
-from common import SchemaConfig, LayerOpt, Key, BaseSchema, ProfSchema
+from common import AuthLevel, SchemaConfig, LayerOpt, Key, BaseSchema, ProfSchema
 
 
 #===============================================================================
 # Implement
 #===============================================================================
-@SchemaConfig(minor=1,
+@SchemaConfig(
+minor=1,
+auth=AuthLevel.AAA,
 cacheOption=LayerOpt(expire=86400),
 searchOption=LayerOpt(expire=2419200))
 class OpenSsh(BaseModel, ProfSchema, BaseSchema):
